@@ -12,9 +12,20 @@ Re-mould it nearer to the Heart's Desire!";
 
 int strindex(const char source[], char pattern[])
 {
-    // TODO: write your code here
-}
+    if (pattern[0] == '\0') {
+        return -1;
+    }
+    
+    int rightmost_pos = -1;
+    char *p = strstr((char *)source, pattern);
 
+    while (p != NULL) {
+        rightmost_pos = p - source;
+        p = strstr(p + 1, pattern);
+    }
+
+    return rightmost_pos;
+}
 // DO NOT change the code below
 #ifndef ___TEST___
 int main(void)
